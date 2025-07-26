@@ -6,7 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 10px;
   height: 100vh;
 }
@@ -24,36 +23,56 @@ header {
   align-items: center;
 }
 
-#scoreboard {
-  display: grid;
-  grid-template-columns: auto repeat(4, 1fr); /* First column auto, then 4 equal-width columns for players */
-  gap: 10px;
-  padding: 10px;
+.player-names {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
   width: 100%;
-  margin-top: 20px;
+}
+
+.player-names input {
+  width: 100px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+#scoreboard {
+  width: 100%;
+  display: block;
 }
 
 .table-header {
-  display: contents;
+  display: grid;
+  grid-template-columns: 200px repeat(4, 1fr); /* 200px for category column, then 4 columns for player scores */
+  padding: 8px;
+  text-align: center;
   font-weight: bold;
 }
 
 .table-header span {
+  padding: 10px;
+  border-bottom: 2px solid #fff;
+}
+
+.category-row {
+  display: grid;
+  grid-template-columns: 200px repeat(4, 1fr); /* Same layout as header */
   padding: 8px;
   text-align: center;
 }
 
-.card {
-  display: contents;
+.category-row span {
+  padding: 8px;
 }
 
-.card input {
+.category-row input {
   width: 100%;
   text-align: center;
-  border-radius: 5px;
-  border: none;
   padding: 8px;
-  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 footer {
@@ -71,38 +90,17 @@ footer {
   padding: 8px;
 }
 
-.player-names {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.player-names input {
-  width: 100px;
-  text-align: center;
-  border-radius: 5px;
-  border: none;
-  padding: 8px;
-}
-
-/* Responsive Adjustments */
 @media (max-width: 600px) {
-  #scoreboard {
-    grid-template-columns: auto repeat(4, 1fr); /* Ensure we keep columns even */
-  }
-
   .player-names {
     flex-direction: column;
     gap: 10px;
   }
 
-  .player-names input {
-    width: 80%;
+  .category-row {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
-  .card {
-    flex-direction: column;
-    align-items: center;
+  .category-row input {
+    width: 90%;
   }
 }
