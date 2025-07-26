@@ -47,7 +47,7 @@ header {
   text-align: center;
   border-radius: 5px;
   border: none;
-  padding: 4px;
+  padding: 5px;
 }
 
 footer {
@@ -58,7 +58,8 @@ footer {
 
 .totals-bar {
   display: flex;
-  justify-content: space-around;
+  gap: 10px;  /*match the gap used in .players*/
+  justify-content: flex-end; /*align to the right like player names*/
   background: #023e8a;
   border-radius: 20px;
   margin-bottom: 10px;
