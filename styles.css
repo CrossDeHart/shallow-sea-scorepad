@@ -17,23 +17,22 @@ header {
 }
 
 #scoreboard {
-  display: grid;
-  grid-template-columns: 1fr repeat(4, 1fr); /* First column for categories, next 4 for players */
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   padding: 10px;
-  align-items: center;
 }
 
-/* Player name inputs above the score fields */
+/* Position the player name inputs on the right side, aligning with score inputs */
 .player-names {
-  grid-column: span 5; /* Makes the player names take the full width of the scoreboard */
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* Align player names with their score columns */
-  gap: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
   margin-bottom: 10px;
 }
 
 .player-names input {
+  width: 100px; /* Adjust based on your design */
   text-align: center;
   padding: 5px;
   border-radius: 5px;
@@ -41,7 +40,7 @@ header {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Style for each category card */
+/* Make sure the score fields align with the player names */
 .card {
   display: flex;
   align-items: center;
@@ -56,19 +55,20 @@ header {
   width: 32px;
 }
 
+/* Align the player inputs with the score values */
 .card .players {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* Align score input fields below each player name */
-  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Ensure input fields fill the available space */
 }
 
 .card input {
-  width: 100%;
+  width: 50px;
   text-align: center;
-  padding: 5px;
+  padding: 4px;
   border-radius: 5px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 footer {
