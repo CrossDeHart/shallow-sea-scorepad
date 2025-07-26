@@ -84,10 +84,10 @@ footer {
   transform: translateX(-7px); /* nudge to the left, adjust px as needed */
 }
 
-/* Move only totals 1 and 2 left */
+/* Move totals 1 and 2 left */
 .totals-bar span:nth-child(2),
 .totals-bar span:nth-child(3) {
-  transform: translateX(-7px); /* tweak as needed */
+  margin-left: -5px; /* adjust -5px as needed */
 }
 
 .totals-bar span {
