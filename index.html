@@ -13,14 +13,6 @@
       <h1>Shallow Sea: Great Barrier Reef</h1>
     </header>
 
-    <!-- Player names above the scoreboard -->
-    <div class="player-names">
-      <input type="text" id="player1" placeholder="Player 1" />
-      <input type="text" id="player2" placeholder="Player 2" />
-      <input type="text" id="player3" placeholder="Player 3" />
-      <input type="text" id="player4" placeholder="Player 4" />
-    </div>
-
     <main id="scoreboard"></main>
 
     <footer>
@@ -51,14 +43,6 @@
 
     const board = document.getElementById("scoreboard");
 
-    // Create player names array dynamically
-    const playerNames = [];
-    for (let i = 1; i <= 4; i++) {
-      const playerNameInput = document.getElementById(`player${i}`);
-      playerNames.push(playerNameInput);
-    }
-
-    // Loop through categories and create scorecards
     categories.forEach(cat => {
       const card = document.createElement("div");
       card.className = `card ${cat.color}`;
@@ -87,7 +71,6 @@
       board.appendChild(card);
     });
 
-    // Function to update totals when input changes
     function updateTotals() {
       for (let p = 0; p < 4; p++) {
         let total = 0;
@@ -95,11 +78,10 @@
           const val = parseInt(playersDiv.children[p].value || 0);
           total += val;
         });
-        document.getElementById(`total${p + 1}`).textContent = total;
+        document.getElementById(`total${p+1}`).textContent = total;
       }
     }
 
-    // Reset button functionality
     document.getElementById("reset").addEventListener("click", () => {
       document.querySelectorAll("input").forEach(input => input.value = 0);
       updateTotals();
