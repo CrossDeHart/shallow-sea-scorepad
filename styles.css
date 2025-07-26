@@ -26,7 +26,8 @@ header {
 .card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* remove justify-content: space-between */
+  gap: 10px; /* space between items */
   border-radius: 12px;
   padding: 8px;
   background: rgba(255, 255, 255, 0.1);
@@ -116,11 +117,13 @@ footer {
 /* Ensure card inputs are aligned below player names */
 .card .players {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
+  margin-left: auto; /* push score inputs all the way right */
 }
 
 .category-label {
+  flex-shrink: 0;        /* prevents shrinking */
+  flex-basis: 180px;     /* fixed width that fits your longest category */
   padding: 6px 12px;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.6);
@@ -128,7 +131,6 @@ footer {
   display: inline-block;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   user-select: none;
-  /* remove margin-left */
 }
 
 .card > .category-label {
