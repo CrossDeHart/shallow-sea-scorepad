@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Shallow Sea: Great Barrier Reef Scorepad</title>
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Shallow Sea: Great Barrier Reef</h1>
+    </header>
+
+    <main id="scoreboard"></main>
+
+    <footer>
+      <div class="totals-bar">
+        <span>Total</span>
+        <span id="total1">0</span>
+        <span id="total2">0</span>
+        <span id="total3">0</span>
+        <span id="total4">0</span>
+      </div>
+      <button id="reset">Reset</button>
+    </footer>
+  </div>
+
+  <script>
+    const categories = [
+      { name: "Turtle Island", icon: "turtle.png", color: "green" },
+      { name: "Orange Ecosystem", icon: "orange.png", color: "orange" },
+      { name: "Blue Ecosystem", icon: "blue.png", color: "blue" },
+      { name: "First Row", icon: "ocean.png", color: "teal" },
+      { name: "Second Row", icon: "ocean.png", color: "teal" },
+      { name: "Third Row", icon: "ocean.png", color: "teal" },
+      { name: "Fourth Row", icon: "ocean.png", color: "teal" },
+      { name: "Fifth Row", icon: "ocean.png", color: "teal" },
+      { name: "Differing Completed Sealife", icon: "sealife.png", color: "purple" },
+      { name: "Incomplete Fish", icon: "incomplete.png", color: "gray" }
+    ];
+
+    const board = document.getElementById("scoreboard");
+
+    categories.forEach(cat => {
+      const card = document.createElement("div");
+      card.className = `card ${cat.color}`;
+
+      const icon = document.createElement("img");
+      icon.src = `images/${cat.icon}`;
+      icon.alt = cat.name;
+
+      const label = document.createElement("span");
+      label.textContent = cat.name;
+
+      const players = document.createElement("div");
+      players.className = "players";
+      for (let i = 1; i <= 4; i++) {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.value = 0;
+        input.addEventListener("input", updateTotals);
+        players.appendChild(input);
+      }
+
+      card.appendChild(icon);
+      card.appendChild(label);
+      card.appendChild(players);
+
+      board.appendChild(card);
+    });
+
+    function updateTotals() {
+      for (let p = 0; p < 4; p++) {
+        let total = 0;
+        document.querySelectorAll(".players").forEach(playersDiv => {
+          const val = parseInt(playersDiv.children[p].value || 0);
+          total += val;
+        });
+        document.getElementById(`total${p+1}`).textContent = total;
+      }
+    }
+
+    document.getElementById("reset").addEventListener("click", () => {
+      document.querySelectorAll("input").forEach(input => input.value = 0);
+      updateTotals();
+    });
+  </script>
+</body>
+</html>
