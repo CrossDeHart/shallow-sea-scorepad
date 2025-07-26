@@ -64,6 +64,7 @@ footer {
   border-radius: 20px;
   margin-bottom: 10px;
   padding: 10px;
+  transform: translateX(-7px); /*move left*/
 }
 
 /* Add these styles for player name inputs */
@@ -74,7 +75,7 @@ footer {
   justify-content: flex-end; /*push everything to the right*/
   margin-bottom: 10px;
   padding: 10px;
-  transform: translateX(-7px); /*move left 5px */
+  transform: translateX(-7px); /*move left */
 }
 
 .totals-bar span, 
