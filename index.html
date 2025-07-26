@@ -30,25 +30,30 @@
   <script>
     const categories = [
       { name: "Turtle Island", icon: "turtle.png", color: "green" },
-      { name: "Orange Ecosystem", icon: "orange.png", color: "orange" },
-      { name: "Blue Ecosystem", icon: "blue.png", color: "blue" },
-      { name: "First Row", icon: "ocean.png", color: "teal" },
-      { name: "Second Row", icon: "ocean.png", color: "teal" },
-      { name: "Third Row", icon: "ocean.png", color: "teal" },
-      { name: "Fourth Row", icon: "ocean.png", color: "teal" },
-      { name: "Fifth Row", icon: "ocean.png", color: "teal" },
+      { name: "Orange Ecosystem", icon: "coral.png", color: "orange" },
+      { name: "Blue Ecosystem", icon: "fish.png", color: "blue" },
+      { name: "First Row", icon: "starfish.png", color: "teal" },
+      { name: "Second Row", icon: "starfish.png", color: "teal" },
+      { name: "Third Row", icon: "starfish.png", color: "teal" },
+      { name: "Fourth Row", icon: "starfish.png", color: "teal" },
+      { name: "Fifth Row", icon: "starfish.png", color: "teal" },
       { name: "Differing Completed Sealife", icon: "sealife.png", color: "purple" },
-      { name: "Incomplete Fish", icon: "incomplete.png", color: "gray" }
+      { name: "Incomplete Fish", icon: "fishbones.png", color: "gray" }
     ];
 
     const board = document.getElementById("scoreboard");
 
+    // Loop through the categories and create cards
     categories.forEach(cat => {
       const card = document.createElement("div");
       card.className = `card ${cat.color}`;
 
       const icon = document.createElement("img");
       icon.src = `images/${cat.icon}`;
+
+      // Log the image paths to the console for debugging
+      console.log("Loading image: ", icon.src);
+
       icon.alt = cat.name;
 
       const label = document.createElement("span");
@@ -56,6 +61,8 @@
 
       const players = document.createElement("div");
       players.className = "players";
+
+      // Create input fields for player scores
       for (let i = 1; i <= 4; i++) {
         const input = document.createElement("input");
         input.type = "number";
@@ -64,13 +71,16 @@
         players.appendChild(input);
       }
 
+      // Append elements to the card
       card.appendChild(icon);
       card.appendChild(label);
       card.appendChild(players);
 
+      // Append the card to the board
       board.appendChild(card);
     });
 
+    // Function to update totals when input changes
     function updateTotals() {
       for (let p = 0; p < 4; p++) {
         let total = 0;
@@ -82,6 +92,7 @@
       }
     }
 
+    // Reset button functionality
     document.getElementById("reset").addEventListener("click", () => {
       document.querySelectorAll("input").forEach(input => input.value = 0);
       updateTotals();
