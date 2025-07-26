@@ -23,17 +23,18 @@ header {
   padding: 10px;
 }
 
-/* Player names should align as columns */
+/* Player names - reduce spacing */
 .player-names {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px;
-  margin: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px; /* smaller horizontal gap */
+  margin: 5px 10px; /* tighter vertical spacing */
   text-align: center;
 }
 
 .player-names input {
-  width: 100%;
+  width: 50%; /* slightly narrower than before */
+  max-width: 120px; /* limit size */
   text-align: center;
   padding: 5px;
   border-radius: 5px;
@@ -41,12 +42,12 @@ header {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Align player inputs under the player names */
+/* Score inputs - keep width the same, just reduce spacing */
 .card .players {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 equal columns */
-  gap: 10px;
-  width: 60%; /* shrink so it aligns better */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px; /* less space between values */
+  width: 60%; /* control total width so it aligns nicely */
 }
 
 .card img {
