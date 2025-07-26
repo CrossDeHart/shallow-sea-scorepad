@@ -16,54 +16,53 @@ header {
   min-height: 100vh;
 }
 
+/* === SCOREBOARD GRID === */
 #scoreboard {
   display: grid;
-  grid-template-columns: auto repeat(4, 1fr); /* 1 column for label + 4 players */
+  grid-template-columns: auto repeat(4, 1fr); /* 1 column for label, 4 for players */
   gap: 8px;
   align-items: center;
   padding: 10px;
 }
 
-/* Player names - reduce spacing */
+/* === PLAYER NAMES === */
 .player-names {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px; /* smaller horizontal gap */
-  margin: 5px 10px; /* tighter vertical spacing */
+  gap: 5px;
+  margin: 5px 10px;
   text-align: center;
 }
 
 .player-names input {
-  width: 20%; /* slightly narrower than before */
-  max-width: 120px; /* limit size */
+  width: 20%; /* your desired size */
+  max-width: 120px;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
   border: none;
   background-color: rgba(255, 255, 255, 0.5);
+  justify-self: center; /* keeps centered in the column */
 }
 
-/* Score inputs - keep width the same, just reduce spacing */
-.card .players {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px; /* less space between values */
-  width: 60%; /* control total width so it aligns nicely */
+/* === GRID LABEL COLUMN (ICON + CATEGORY NAME) === */
+.card-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.card img {
+.card-label img {
   height: 32px;
   width: 32px;
 }
 
-/* Align the player inputs with the score values */
-.card .players {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; /* Ensure input fields fill the available space */
+/* === SCORE INPUTS (GRID CELLS) === */
+.card-input {
+  text-align: center;
 }
 
-.card input {
+.card-input input {
   width: 50px;
   text-align: center;
   padding: 4px;
@@ -72,6 +71,7 @@ header {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* === TOTALS ROW === */
 footer {
   padding: 10px;
   background: rgba(0, 0, 0, 0.3);
@@ -80,7 +80,7 @@ footer {
 
 .totals-bar {
   display: grid;
-  grid-template-columns: auto 1fr 1fr 1fr 1fr; /* "Total" label + 4 columns */
+  grid-template-columns: auto repeat(4, 1fr); /* "Total" label + 4 player totals */
   background: #023e8a;
   border-radius: 20px;
   margin-bottom: 10px;
