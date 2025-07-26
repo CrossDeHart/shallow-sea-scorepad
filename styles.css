@@ -33,7 +33,7 @@ header {
 }
 
 .player-names input {
-  width: 50%; /* slightly narrower than before */
+  width: 20%; /* slightly narrower than before */
   max-width: 120px; /* limit size */
   text-align: center;
   padding: 5px;
