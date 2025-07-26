@@ -6,14 +6,137 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
   <title>Shallow Sea: Great Barrier Reef Scorepad</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: url('images/background.png') center/cover no-repeat fixed,
+        linear-gradient(to bottom, #0077b6, #90e0ef);
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    #scoreboard {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 12px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .card img {
+      height: 32px;
+      width: 32px;
+    }
+
+    /* New class for category labels */
+    .category-label {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 6px 12px;
+      border-radius: 8px;
+      color: #fff;
+      display: inline-block;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+      margin-left: 10px;
+      user-select: none;
+    }
+
+    .card .players {
+      display: flex;
+      gap: 5px;
+    }
+
+    .card input {
+      width: 50px;
+      text-align: center;
+      border-radius: 5px;
+      border: none;
+      padding: 5px;
+    }
+
+    footer {
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .totals-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+      border-radius: 20px;
+      background: #023e8a;
+    }
+
+    .totals-bar .label {
+      margin-right: auto;
+      font-weight: bold;
+    }
+
+    .totals-bar span:not(.label) {
+      display: inline-block;
+      width: 50px;
+      text-align: center;
+      margin-left: 10px;
+    }
+
+    .totals-bar span:nth-child(2),
+    .totals-bar span:nth-child(3) {
+      margin-left: 5px;
+    }
+
+    .totals-bar span {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .player-names {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+      padding: 10px;
+      transform: translateX(-7px);
+    }
+
+    .player-names input {
+      width: 50px;
+      text-align: center;
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
 </head>
 <body>
   <div class="app-container">
     <header>
       <h1>Shallow Sea: Great Barrier Reef</h1>
     </header>
-	
-	<!-- Player names inputs -->
+
+    <!-- Player names inputs -->
     <div class="player-names">
       <input type="text" id="player1" placeholder="Player 1" />
       <input type="text" id="player2" placeholder="Player 2" />
@@ -60,6 +183,7 @@
       icon.alt = cat.name;
 
       const label = document.createElement("span");
+      label.className = "category-label"; // Added class here
       label.textContent = cat.name;
 
       const players = document.createElement("div");
@@ -86,12 +210,12 @@
           const val = parseInt(playersDiv.children[p].value || 0);
           total += val;
         });
-        document.getElementById(`total${p+1}`).textContent = total;
+        document.getElementById(`total${p + 1}`).textContent = total;
       }
     }
 
     document.getElementById("reset").addEventListener("click", () => {
-      document.querySelectorAll("input").forEach(input => input.value = 0);
+      document.querySelectorAll("input").forEach(input => (input.value = 0));
       updateTotals();
     });
   </script>
