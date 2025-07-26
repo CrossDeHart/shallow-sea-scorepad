@@ -87,7 +87,7 @@ footer {
 /* Move totals 1 and 2 left */
 .totals-bar span:nth-child(2),
 .totals-bar span:nth-child(3) {
-  margin-left: -5px; /* adjust -5px as needed */
+  margin-left: -9px; /* adjust -5px as needed */
 }
 
 .totals-bar span {
