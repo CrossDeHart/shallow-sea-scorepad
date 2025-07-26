@@ -19,8 +19,24 @@ header {
 #scoreboard {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px; /* Increased gap for clarity */
   padding: 10px;
+}
+
+.player-names {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px; /* Space between names and the first row */
+}
+
+.player-names input {
+  width: 120px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid #fff;
+  color: #000;
 }
 
 .card {
@@ -30,6 +46,7 @@ header {
   border-radius: 12px;
   padding: 8px;
   background: rgba(255, 255, 255, 0.1);
+  width: 100%; /* Ensures cards take full width available */
 }
 
 .card img {
@@ -39,15 +56,18 @@ header {
 
 .card .players {
   display: flex;
-  gap: 5px;
+  gap: 10px; /* Increased gap between score columns */
+  justify-content: space-between; /* Distribute space evenly */
+  width: 100%; /* Make sure players' score columns stretch across the card */
 }
 
 .card input {
-  width: 50px;
+  width: 60px; /* Slightly wider input fields */
   text-align: center;
   border-radius: 5px;
   border: none;
   padding: 4px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 footer {
@@ -63,4 +83,17 @@ footer {
   border-radius: 20px;
   margin-bottom: 10px;
   padding: 8px;
+}
+
+button {
+  padding: 10px;
+  background: #ff6f61;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d85f53;
 }
