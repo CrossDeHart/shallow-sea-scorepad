@@ -81,7 +81,7 @@ footer {
 }
 
 .totals-bar span:not(.label):not(:last-child) {
-  transform: translateX(-5px); /* nudge to the left, adjust px as needed */
+  transform: translateX(-7px); /* nudge to the left, adjust px as needed */
 }
 
 .totals-bar span {
