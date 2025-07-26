@@ -17,9 +17,10 @@ header {
 }
 
 #scoreboard {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: auto repeat(4, 1fr); /* 1 column for label + 4 players */
+  gap: 8px;
+  align-items: center;
   padding: 10px;
 }
 
