@@ -51,59 +51,9 @@
 
     const board = document.getElementById("scoreboard");
 
-    // Create player names input dynamically
-    const playerNames = [];
-    for (let i = 1; i <= 4; i++) {
-      const playerNameInput = document.getElementById(`player${i}`);
-      playerNames.push(playerNameInput);
-    }
-
-    // Loop through categories and create scorecards
     categories.forEach(cat => {
       const card = document.createElement("div");
       card.className = `card ${cat.color}`;
 
       const icon = document.createElement("img");
-      icon.src = `images/${cat.icon}`;
-      icon.alt = cat.name;
-
-      const label = document.createElement("span");
-      label.textContent = cat.name;
-
-      const players = document.createElement("div");
-      players.className = "players";
-      for (let i = 1; i <= 4; i++) {
-        const input = document.createElement("input");
-        input.type = "number";
-        input.value = 0;
-        input.addEventListener("input", updateTotals);
-        players.appendChild(input);
-      }
-
-      card.appendChild(icon);
-      card.appendChild(label);
-      card.appendChild(players);
-
-      board.appendChild(card);
-    });
-
-    // Function to update totals when input changes
-    function updateTotals() {
-      for (let p = 0; p < 4; p++) {
-        let total = 0;
-        document.querySelectorAll(".players").forEach(playersDiv => {
-          const val = parseInt(playersDiv.children[p].value || 0);
-          total += val;
-        });
-        document.getElementById(`total${p + 1}`).textContent = total;
-      }
-    }
-
-    // Reset button functionality
-    document.getElementById("reset").addEventListener("click", () => {
-      document.querySelectorAll("input").forEach(input => input.value = 0);
-      updateTotals();
-    });
-  </script>
-</body>
-</html>
+      icon.src = `images/
