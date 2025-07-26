@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Shallow Sea: Great Barrier Reef Scorepad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #0077b6, #90e0ef);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      padding: 10px;
+    }
+    table {
+      width: 90%;
+      margin: auto;
+      border-collapse: collapse;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #fff;
+    }
+    input {
+      width: 50px;
+      text-align: center;
+    }
+    .buttons {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Shallow Sea: Great Barrier Reef Scorepad</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th contenteditable="true">Player 1</th>
+        <th contenteditable="true">Player 2</th>
+        <th contenteditable="true">Player 3</th>
+        <th contenteditable="true">Player 4</th>
+      </tr>
+    </thead>
+    <tbody id="score-rows">
+      <!-- Rows populated by JS -->
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Total</th>
+        <th id="total1">0</th>
+        <th id="total2">0</th>
+        <th id="total3">0</th>
+        <th id="total4">0</th>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="buttons">
+    <button id="reset">Reset</button>
+  </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+
+    const categories = [
+      'Turtle Island',
+      'Orange Ecosystem',
+      'Blue Ecosystem',
+      'First Row',
+      'Second Row',
+      'Third Row',
+      'Fourth Row',
+      'Fifth Row',
+      'Differing Completed Sealife',
+      'Incomplete Fish'
+    ];
+
+    const tbody = document.getElementById('score-rows');
+
+    categories.forEach(cat => {
+      const row = document.createElement('tr');
+      const catCell = document.createElement('td');
+      catCell.textContent = cat;
+      row.appendChild(catCell);
+      for (let i = 1; i <= 4; i++) {
+        const cell = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.value = '0';
+        input.addEventListener('input', updateTotals);
+        cell.appendChild(input);
+        row.appendChild(cell);
+      }
+      tbody.appendChild(row);
+    });
+
+    function updateTotals() {
+      for (let p = 1; p <= 4; p++) {
+        let total = 0;
+        tbody.querySelectorAll('tr').forEach(row => {
+          const val = parseInt(row.children[p].children[0].value || 0);
+          total += val;
+        });
+        document.getElementById('total' + p).textContent = total;
+      }
+    }
+
+    document.getElementById('reset').addEventListener('click', () => {
+      tbody.querySelectorAll('input').forEach(input => input.value = '0');
+      updateTotals();
+    });
+  </script>
+</body>
+</html>
