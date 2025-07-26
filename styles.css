@@ -70,6 +70,7 @@ footer {
   display: flex;
   /* Remove justify-content: space-between; */
   gap: 10px;  /* Match this to the .card .players gap */
+  justify-content: flex-end; /*push everything to the right*/
   margin-bottom: 10px;
   padding: 10px;
 }
