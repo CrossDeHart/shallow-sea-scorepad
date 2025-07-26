@@ -21,8 +21,10 @@
       <input type="text" id="player4" placeholder="Player 4" />
     </div>
 
-    <main id="scoreboard"></main>
-
+    <main id="scoreboard">
+  <!-- grid rows and cells will be populated dynamically in JS -->
+    </main>
+	  
     <footer>
       <div class="totals-bar">
         <span>Total</span>
@@ -48,36 +50,38 @@
       { name: "Differing Completed Sealife", icon: "sealife.png", color: "purple" },
       { name: "Incomplete Fish", icon: "incomplete.png", color: "gray" }
     ];
+const board = document.getElementById("scoreboard");
 
-    const board = document.getElementById("scoreboard");
+categories.forEach(cat => {
+  // First column: category label + icon
+  const labelCell = document.createElement("div");
+  labelCell.className = "card-label";
 
-    categories.forEach(cat => {
-      const card = document.createElement("div");
-      card.className = `card ${cat.color}`;
+  const icon = document.createElement("img");
+  icon.src = `images/${cat.icon}`;
+  icon.alt = cat.name;
 
-      const icon = document.createElement("img");
-      icon.src = `images/${cat.icon}`;
-      icon.alt = cat.name;
+  const label = document.createElement("span");
+  label.textContent = cat.name;
 
-      const label = document.createElement("span");
-      label.textContent = cat.name;
+  labelCell.appendChild(icon);
+  labelCell.appendChild(label);
+  board.appendChild(labelCell);
 
-      const players = document.createElement("div");
-      players.className = "players";
-      for (let i = 1; i <= 4; i++) {
-        const input = document.createElement("input");
-        input.type = "number";
-        input.value = 0;
-        input.addEventListener("input", updateTotals);
-        players.appendChild(input);
-      }
+  // Next 4 columns: player score inputs
+  for (let i = 1; i <= 4; i++) {
+    const inputCell = document.createElement("div");
+    inputCell.className = "card-input";
 
-      card.appendChild(icon);
-      card.appendChild(label);
-      card.appendChild(players);
+    const input = document.createElement("input");
+    input.type = "number";
+    input.value = 0;
+    input.addEventListener("input", updateTotals);
 
-      board.appendChild(card);
-    });
+    inputCell.appendChild(input);
+    board.appendChild(inputCell);
+  }
+});
 
     function updateTotals() {
       for (let p = 0; p < 4; p++) {
