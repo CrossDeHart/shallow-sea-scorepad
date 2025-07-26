@@ -64,3 +64,34 @@ footer {
   margin-bottom: 10px;
   padding: 8px;
 }
+
+/* Add these styles for player name inputs */
+.player-names {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.player-names input {
+  width: 100px; /* Adjust width based on your design */
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#scoreboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+/* Ensure card inputs are aligned below player names */
+.card .players {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
