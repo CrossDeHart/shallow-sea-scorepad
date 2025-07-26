@@ -68,7 +68,8 @@ footer {
 /* Add these styles for player name inputs */
 .player-names {
   display: flex;
-  justify-content: space-between;
+  /* Remove justify-content: space-between; */
+  gap: 10px;  /* Match this to the .card .players gap */
   margin-bottom: 10px;
   padding: 10px;
 }
