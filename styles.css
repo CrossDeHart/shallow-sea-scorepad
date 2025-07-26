@@ -23,11 +23,11 @@ header {
   padding: 10px;
 }
 
+/* Card container with icon, label, and inputs */
 .card {
   display: flex;
   align-items: center;
-  /* remove justify-content: space-between */
-  gap: 10px; /* space between items */
+  gap: 12px; /* space between icon, label, inputs */
   border-radius: 12px;
   padding: 8px;
   background: rgba(255, 255, 255, 0.1);
@@ -36,13 +36,30 @@ header {
 .card img {
   height: 32px;
   width: 32px;
+  flex-shrink: 0; /* don't shrink icon */
 }
 
+/* Category label with fixed width and background */
+.category-label {
+  flex-shrink: 0;
+  width: 180px; /* fixed width for consistent sizing */
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  user-select: none;
+  display: inline-block;
+}
+
+/* Player score inputs container pushed to right */
 .card .players {
   display: flex;
-  gap: 5px;
+  gap: 10px;
+  margin-left: auto; /* push inputs all the way right */
 }
 
+/* Player score input boxes */
 .card input {
   width: 50px;
   text-align: center;
@@ -57,54 +74,45 @@ footer {
   text-align: center;
 }
 
-/* Cleaned .totals-bar styles */
+/* Totals bar styling */
 .totals-bar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* push total values right */
   align-items: center;
   padding: 10px;
   border-radius: 20px;
   background: #023e8a;
 }
 
-/* "Total" label stays left */
+/* Total label pushed left */
 .totals-bar .label {
   margin-right: auto;
   font-weight: bold;
 }
 
-/* Base style for total values */
+/* Total value spans */
 .totals-bar span:not(.label) {
   display: inline-block;
-  width: 50px;
+  width: 50px;      /* same width as score inputs */
   text-align: center;
   margin-left: 10px;
-}
-
-/* Move totals 1 and 2 slightly left */
-.totals-bar span:nth-child(2),
-.totals-bar span:nth-child(3) {
-  margin-left: 5px;
-}
-
-/* Reset span margins and font */
-.totals-bar span {
-  margin: 0;
-  padding: 0;
   font-size: 16px;
   line-height: 1.2;
+  padding: 0;
+  margin: 0;
 }
 
-/* Player names styling */
+/* Player names input container */
 .player-names {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
   margin-bottom: 10px;
   padding: 10px;
-  transform: translateX(-7px);
+  transform: translateX(-7px); /* shift left slightly to align */
 }
 
+/* Player name input boxes */
 .player-names input {
   width: 50px;
   text-align: center;
@@ -112,28 +120,4 @@ footer {
   border-radius: 5px;
   border: none;
   background-color: rgba(255, 255, 255, 0.5);
-}
-
-/* Ensure card inputs are aligned below player names */
-.card .players {
-  display: flex;
-  gap: 10px;
-  margin-left: auto; /* push score inputs all the way right */
-}
-
-.category-label {
-  flex-shrink: 0;        /* prevents shrinking */
-  flex-basis: 180px;     /* fixed width that fits your longest category */
-  padding: 6px 12px;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  display: inline-block;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-  user-select: none;
-}
-
-.card > .category-label {
-  flex-shrink: 0;
-  flex-basis: 180px; /* or whatever width fits your longest category name */
 }
