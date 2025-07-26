@@ -80,6 +80,10 @@ footer {
   text-align: center;
 }
 
+.totals-bar span:not(.label):not(:last-child) {
+  transform: translateX(-5px); /* nudge to the left, adjust px as needed */
+}
+
 .totals-bar span {
   margin: 0;
   padding: 0;
