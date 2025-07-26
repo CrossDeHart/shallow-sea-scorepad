@@ -13,7 +13,7 @@
       <h1>Shallow Sea: Great Barrier Reef</h1>
     </header>
 
-    <!-- Add player names above the scoreboard -->
+    <!-- Player names above the table -->
     <div class="player-names">
       <input type="text" id="player1" placeholder="Player 1" />
       <input type="text" id="player2" placeholder="Player 2" />
@@ -21,7 +21,16 @@
       <input type="text" id="player4" placeholder="Player 4" />
     </div>
 
-    <main id="scoreboard"></main>
+    <!-- Scoreboard table -->
+    <main id="scoreboard">
+      <div class="table-header">
+        <span>Category</span>
+        <span id="player1-name">Player 1</span>
+        <span id="player2-name">Player 2</span>
+        <span id="player3-name">Player 3</span>
+        <span id="player4-name">Player 4</span>
+      </div>
+    </main>
 
     <footer>
       <div class="totals-bar">
@@ -51,9 +60,52 @@
 
     const board = document.getElementById("scoreboard");
 
+    // Create player names array dynamically
+    const playerNames = [];
+    for (let i = 1; i <= 4; i++) {
+      const playerNameInput = document.getElementById(`player${i}`);
+      playerNames.push(playerNameInput);
+    }
+
+    // Create a header row with player names
     categories.forEach(cat => {
       const card = document.createElement("div");
       card.className = `card ${cat.color}`;
 
-      const icon = document.createElement("img");
-      icon.src = `images/
+      // Category name
+      const label = document.createElement("span");
+      label.textContent = cat.name;
+
+      // Create input fields for players
+      for (let i = 1; i <= 4; i++) {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.value = 0;
+        input.addEventListener("input", updateTotals);
+        card.appendChild(input);
+      }
+
+      // Append the card to the scoreboard
+      board.appendChild(card);
+    });
+
+    // Function to update totals when input changes
+    function updateTotals() {
+      for (let p = 0; p < 4; p++) {
+        let total = 0;
+        document.querySelectorAll(".card").forEach(card => {
+          const val = parseInt(card.children[p + 1].value || 0); // Skipping category name at index 0
+          total += val;
+        });
+        document.getElementById(`total${p + 1}`).textContent = total;
+      }
+    }
+
+    // Reset button functionality
+    document.getElementById("reset").addEventListener("click", () => {
+      document.querySelectorAll("input").forEach(input => input.value = 0);
+      updateTotals();
+    });
+  </script>
+</body>
+</html>
