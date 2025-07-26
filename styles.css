@@ -72,12 +72,6 @@ footer {
   font-weight: bold;
 }
 
-/* Wrap values in their own container */
-.totals-bar .totals-values {
-  display: flex;
-  gap: 10px;
-}
-
 /* Values align like the score boxes */
 .totals-bar span:not(.label) {
   display: inline-block;
