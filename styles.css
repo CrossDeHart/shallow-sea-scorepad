@@ -59,12 +59,18 @@ footer {
 .totals-bar {
   display: flex;
   gap: 10px;  /*match the gap used in .players*/
-  justify-content: flex-end; /*align to the right like player names*/
+  justify-content: center; /*align to the center*/
   background: #023e8a;
   border-radius: 20px;
   margin-bottom: 10px;
   padding: 10px;
-  transform: translateX(-7px); /*move left*/
+}
+
+.totals-bar span, 
+.totals-bar div {
+  display: inline-block;
+  width: 50px;         /* match input width */
+  text-align: center;  /* center like inputs */
 }
 
 /* Add these styles for player name inputs */
@@ -78,12 +84,7 @@ footer {
   transform: translateX(-7px); /*move left */
 }
 
-.totals-bar span, 
-.totals-bar div {
-  display: inline-block;
-  width: 50px;         /* match input width */
-  text-align: center;  /* center like inputs */
-}
+
 
 .player-names input {
   width: 50px; /* Adjust width based on your design */
