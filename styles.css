@@ -119,3 +119,14 @@ footer {
   justify-content: space-between;
   gap: 10px;
 }
+
+.category-label {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark background */
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #fff;
+  display: inline-block; /* shrink-wrap the text */
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  margin-left: 10px; /* spacing from the icon */
+  user-select: none; /* optional: prevent text selection */
+}
