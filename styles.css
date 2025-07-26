@@ -17,12 +17,31 @@ header {
 }
 
 #scoreboard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr repeat(4, 1fr); /* First column for categories, next 4 for players */
   gap: 10px;
   padding: 10px;
+  align-items: center;
 }
 
+/* Player name inputs above the score fields */
+.player-names {
+  grid-column: span 5; /* Makes the player names take the full width of the scoreboard */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* Align player names with their score columns */
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.player-names input {
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Style for each category card */
 .card {
   display: flex;
   align-items: center;
@@ -38,16 +57,18 @@ header {
 }
 
 .card .players {
-  display: flex;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* Align score input fields below each player name */
+  gap: 10px;
 }
 
 .card input {
-  width: 50px;
+  width: 100%;
   text-align: center;
+  padding: 5px;
   border-radius: 5px;
   border: none;
-  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 footer {
@@ -63,35 +84,4 @@ footer {
   border-radius: 20px;
   margin-bottom: 10px;
   padding: 8px;
-}
-
-/* Add these styles for player name inputs */
-.player-names {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.player-names input {
-  width: 100px; /* Adjust width based on your design */
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-#scoreboard {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-}
-
-/* Ensure card inputs are aligned below player names */
-.card .players {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
 }
