@@ -16,62 +16,40 @@ header {
   min-height: 100vh;
 }
 
-/* === SCOREBOARD GRID === */
 #scoreboard {
-  display: grid;
-  grid-template-columns: auto repeat(4, 1fr); /* 1 column for label, 4 for players */
-  gap: 8px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 10px;
 }
 
-/* === PLAYER NAMES === */
-.player-names {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-  margin: 5px 10px;
-  text-align: center;
-}
-
-.player-names input {
-  width: 20%; /* your desired size */
-  max-width: 120px;
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.5);
-  justify-self: center; /* keeps centered in the column */
-}
-
-/* === GRID LABEL COLUMN (ICON + CATEGORY NAME) === */
-.card-label {
+.card {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  border-radius: 12px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.card-label img {
+.card img {
   height: 32px;
   width: 32px;
 }
 
-/* === SCORE INPUTS (GRID CELLS) === */
-.card-input {
-  text-align: center;
+.card .players {
+  display: flex;
+  gap: 5px;
 }
 
-.card-input input {
+.card input {
   width: 50px;
   text-align: center;
-  padding: 4px;
   border-radius: 5px;
   border: none;
-  background: rgba(255, 255, 255, 0.2);
+  padding: 4px;
 }
 
-/* === TOTALS ROW === */
 footer {
   padding: 10px;
   background: rgba(0, 0, 0, 0.3);
@@ -79,11 +57,34 @@ footer {
 }
 
 .totals-bar {
-  display: grid;
-  grid-template-columns: auto repeat(4, 1fr); /* "Total" label + 4 player totals */
+  display: flex;
+  justify-content: space-around;
   background: #023e8a;
   border-radius: 20px;
   margin-bottom: 10px;
   padding: 8px;
+}
+
+/* Add these styles for player name inputs */
+.player-names {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.player-names input {
+  width: 100px; /* Adjust width based on your design */
   text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure card inputs are aligned below player names */
+.card .players {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
