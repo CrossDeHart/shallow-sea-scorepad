@@ -13,7 +13,7 @@
       <h1>Shallow Sea: Great Barrier Reef</h1>
     </header>
 
-    <!-- Player names above the table -->
+    <!-- Add player names above the scoreboard -->
     <div class="player-names">
       <input type="text" id="player1" placeholder="Player 1" />
       <input type="text" id="player2" placeholder="Player 2" />
@@ -21,21 +21,7 @@
       <input type="text" id="player4" placeholder="Player 4" />
     </div>
 
-    <!-- Scoreboard -->
-    <main id="scoreboard">
-      <!-- Table header -->
-      <div class="table-header">
-        <span>Category</span>
-        <span id="player1-name">Player 1</span>
-        <span id="player2-name">Player 2</span>
-        <span id="player3-name">Player 3</span>
-        <span id="player4-name">Player 4</span>
-      </div>
-
-      <!-- Categories & Scores -->
-      <div class="table-content"></div>
-
-    </main>
+    <main id="scoreboard"></main>
 
     <footer>
       <div class="totals-bar">
@@ -63,44 +49,50 @@
       { name: "Incomplete Fish", icon: "incomplete.png", color: "gray" }
     ];
 
-    const board = document.querySelector(".table-content");
+    const board = document.getElementById("scoreboard");
 
-    // Create player names dynamically
+    // Create player names input dynamically
     const playerNames = [];
     for (let i = 1; i <= 4; i++) {
       const playerNameInput = document.getElementById(`player${i}`);
       playerNames.push(playerNameInput);
     }
 
-    // Loop through categories and create rows for each category
+    // Loop through categories and create scorecards
     categories.forEach(cat => {
-      const row = document.createElement("div");
-      row.className = "category-row";
+      const card = document.createElement("div");
+      card.className = `card ${cat.color}`;
 
-      // Category name
+      const icon = document.createElement("img");
+      icon.src = `images/${cat.icon}`;
+      icon.alt = cat.name;
+
       const label = document.createElement("span");
-      label.className = "category-name";
       label.textContent = cat.name;
 
-      // Player score inputs
+      const players = document.createElement("div");
+      players.className = "players";
       for (let i = 1; i <= 4; i++) {
         const input = document.createElement("input");
         input.type = "number";
         input.value = 0;
         input.addEventListener("input", updateTotals);
-        row.appendChild(input);
+        players.appendChild(input);
       }
 
-      // Add category row to the table
-      board.appendChild(row);
+      card.appendChild(icon);
+      card.appendChild(label);
+      card.appendChild(players);
+
+      board.appendChild(card);
     });
 
     // Function to update totals when input changes
     function updateTotals() {
       for (let p = 0; p < 4; p++) {
         let total = 0;
-        document.querySelectorAll(".category-row").forEach(row => {
-          const val = parseInt(row.children[p + 1].value || 0); // Skipping category name at index 0
+        document.querySelectorAll(".players").forEach(playersDiv => {
+          const val = parseInt(playersDiv.children[p].value || 0);
           total += val;
         });
         document.getElementById(`total${p + 1}`).textContent = total;
