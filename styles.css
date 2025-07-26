@@ -83,6 +83,7 @@ footer {
   border-radius: 5px;
   border: none;
   background-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(-5px); /*move left 5px */
 }
 
 /* Ensure card inputs are aligned below player names */
